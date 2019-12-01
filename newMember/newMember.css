@@ -1,0 +1,515 @@
+html{
+    overflow: hidden;
+    font-family: cursive;
+}
+
+/* 背景图片设置 */
+body{
+    background-image: url(img/img-19.jpg);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* width: 100%;
+    height: 100%; */
+
+   
+}
+/* 书的位置和大小定义 设置景深及动画 */
+.wrap{
+    
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    height: 65vh;
+    /* width: 8rem;
+    height: 10rem; */
+    transition: 1s;
+    transform-style: preserve-3d;
+    /* 设置2000像素的景深 */
+    perspective: 2000px;
+    transform: rotate(15deg);
+}
+
+/* 设置图书阴影，只是效果，对其它元素无影响 */
+.wrap::before{
+    position: absolute;
+    top: -5px;
+    left: 0;
+    content: '';
+    width:100%;
+    height: 5px;
+    background-color:#bac1ba;
+    transform: skewX(-45deg);
+    transform-origin: bottom;
+}
+
+.wrap::after{
+    position: absolute;
+    top: 0;
+    right: -5px;
+    content: '';
+    width:5px;
+    height: 100%;
+    background-color:#bac1ba;
+    transform: skewY(-45deg);
+    transform-origin: left;
+}
+/* 书的封皮即第一页 */
+.wrap .page1{
+    font-weight: 900;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+}
+/* 包裹文字和logo的父级盒子 */
+.wrap .imgBox{
+  
+    /* align-items: center; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(img/img-16.jpg);
+    background-size:100% 100%;
+    transform-origin: left;
+    transition: 0.7s;
+}
+/* 设置书第一页的背面 但好像没设上？*/
+.wrap .back{
+    position: absolute;
+    background-image: url(img/img-5.jpg);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.7s;
+}
+
+
+/* R:138 G:109 B:53 */
+.wrap .page2 , .page3{
+    position: absolute;
+    background: url(img/img-16.jpg);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wrap .page3{
+    z-index: -2;
+}
+
+.wrap .page2{
+
+    transform-origin: left;
+    transition: 0.7s;
+}
+
+
+
+.wrap:hover .imgBox .bark{
+    transition: .7s;
+    opacity: 1;
+}
+
+.page1-main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    transition: 3s;
+    font-size: 0.45rem;
+    letter-spacing: 1vw;
+   
+}
+
+.logo{
+    position: absolute;
+    background: url(img/img-2.jpg);
+    background-size:100% 100% ;
+    margin-top: 30%;
+    height: 15vw;
+    width: 15vw;
+    border-radius: 100%;
+}
+
+.name{
+    position: absolute;
+    margin-top: 70%;
+    margin-bottom: 5%;
+}
+
+.tips{
+    margin-top: 90%;
+}
+
+.unshow{
+    display: none;
+}
+
+.show{
+    opacity: 1;
+}
+
+.unshowToo{
+    opacity: 0;
+    transition: 4s;
+}
+
+.showToo{
+    opacity: 1;
+    transition: 4s;
+}
+
+.loader {
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /* width: 50px;
+    height: 10px; */
+    width: 0.9rem;
+    height: 1vh;
+    background: #3498DB;
+    border-radius: 5vw;
+    -webkit-animation: load 1.8s ease-in-out infinite;
+    animation: load 1.8s ease-in-out infinite;
+}
+.loader:before,
+.loader:after {
+    position: absolute;
+    display: block;
+    content: "";
+    -webkit-animation: load 1.8s ease-in-out infinite;
+    animation: load 1.8s ease-in-out infinite;
+   
+    height: 1vh;
+    border-radius: 5vw;
+}
+.loader:before {
+    top: -2vh;
+    left: 2vw;
+    width: 0.7rem;
+    background: #EF4836;
+}
+.loader:after {
+    bottom: -2vh;
+    width: 0.7rem;
+    background: #FF5809;
+}
+@-webkit-keyframes load {
+    0% {
+        -webkit-transform: translateX(4vw);
+        transform: translateX(4vw);
+    }
+    50% {
+        -webkit-transform: translateX(-3vw);
+        transform: translateX(-3vw);
+    }
+    100% {
+        -webkit-transform: translateX(4vw);
+        transform: translateX(4vw);
+    }
+}
+@keyframes load {
+    0% {
+        -webkit-transform: translateX(4vw);
+        transform: translateX(4vw);
+    }
+    50% {
+        -webkit-transform: translateX(-3vw);
+        transform: translateX(-3vw);
+    }
+    100% {
+        -webkit-transform: translateX(4vw);
+        transform: translateX(4vw);
+    }
+}
+/*--------------------*/
+
+
+.page2 .login{
+    position: relative;
+    /* border: 1px solid black; */
+    width: 70vw;
+    height: 50vh;
+    margin: 2rem auto;
+}
+
+.page2 .loading{
+    position: absolute;
+    width: 3rem;
+    height: 2rem;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50% , -50%);
+   
+}
+
+.page2 .login .logo-page2{
+    margin: 2vh auto;
+    background-image: url(img/img-2.jpg);
+    background-size: 100% 100%;
+    height: 10vw;
+    width: 10vw;
+    border-radius: 100%;
+    
+}
+
+.page2 .login > input{
+    border: none;
+    letter-spacing: 1vw;
+    display: block;
+    outline: 0;
+    border-radius: 5vw;
+    background-color: blanchedalmond;
+    font-family: cursive;
+
+}
+
+.page2 .login .acc , .pas , .phone{
+  
+    margin: 3vh auto;
+    /* width: 40vw; */
+    width:4rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    padding-left: 2vw;
+    font-size: 0.15rem;
+}
+
+.page2 .login .submit{
+   
+    margin: 0.5rem auto;
+    border: none;
+    width: 2rem;
+    height: 2.5vh;
+    line-height: 2.5vh;
+    font-size: 0.35rem;
+    color: rgb(214, 147, 47);
+}
+
+.knowMore{
+    display: block;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    width: 2rem;
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    font-size: 0.3rem;
+}
+
+.knowMore::before , .knowMore::after{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 0.1vh;
+    top: 52%;
+    background: #000;
+}
+
+.knowMore::before{
+    left: 100%;
+}
+
+.knowMore::after{
+    right: 100%;
+}
+
+.change::-webkit-input-placeholder{
+    color: red;
+}
+
+.wrong{
+    animation: wrongChange .4s;
+    animation-direction: normal;
+    transition: 1s;
+}
+
+@keyframes wrongChange{
+    0%{
+        transform:translateX(-2vw);
+    }
+    100%{
+        transform: translateX(2vw);
+    }
+  
+     
+}
+
+.wrongTime{
+    animation: wrongChange1 .4s;
+    animation-direction: normal;
+    transition: 1s;
+}
+
+@keyframes wrongChange1{
+    0%{
+        background-color: '';
+    }
+    50%{
+        background-color: red;
+    }
+    100%{
+        background-color: '';
+    }
+}
+
+.timeChoose{
+    overflow: hidden;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .25rem;
+
+}
+
+.time1 , .time2{
+    position: relative;
+    width: 3.3rem;
+    height: 1rem;
+    border-radius: 4vw;
+    /* border: 1px solid black; */
+   /* background-color: blanchedalmond;*/
+}
+
+.time1{
+    float: left;
+}
+
+.time2{
+    float: right;
+}
+
+.time-top , .time-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-wrap{
+    width: 3rem;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+
+.timeTips{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    margin-top: -1vh;
+    font-style: italic;
+}
+
+.secret{
+    position: absolute;
+  
+    background: url(img/secret3.png);
+    background-size: 100% 100%;
+    width: 0.4rem;
+    height: 0.4rem;
+    top: 0.8rem;
+    right: 1.4rem;
+}
+
+
+
+.page3-show{
+    font-size: 0.5rem;
+    position: relative;
+     /* border: 1px solid black;   */
+    width: 70vw;
+    height: 55vh;
+    margin: 1rem auto;
+}
+
+.page3-main{
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform:translateX(-50%);
+    font-size: 0.5rem;
+    margin: 3vh auto;
+    
+    
+}
+
+.page3-container{
+    font-size: 0.45rem;
+    width: 5rem;
+    line-height: 1rem;
+    margin: 0 auto;
+    margin-bottom: 0.4rem;
+    
+}
+
+.page3-timeChange{
+    margin-bottom: 0.2rem;
+}
+
+.page3-time > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.returnPage2{
+    text-align: center;
+    width: 2rem;
+    margin: 0.2rem auto;
+    font-size: 0.5rem;
+    border: 1px solid black;
+}
+
+.page3-wrong{
+    font-size: 0.5rem;
+    position: relative;
+   
+    width: 70vw;
+    height: 55vh;
+    margin: 0.8rem auto;
+}
+
+.wrongWrap div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1rem 0;
+    
+}
+
+.returnPage2Too{
+    
+    width: 2rem;
+    text-align: center;
+    margin: 0 auto;
+    
+}
+
+.page2-control{
+    opacity: 0.7;
+}
+
+.timeChange-text{
+    line-height: 1rem;
+}
